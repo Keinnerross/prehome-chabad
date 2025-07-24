@@ -7,7 +7,7 @@ function shabbatApp() {
                 description: 'Comunidad en las montañas de Chiriquí con calidez y tradición',
                 location: 'Boquete',
                 logo: 'assets/brand/logo_boquete.png',
-                url: 'https://chabad-boquete.org.pa'
+                url: '#'
             },
             {
                 id: 'chabad-panama',
@@ -15,7 +15,7 @@ function shabbatApp() {
                 description: 'Centro espiritual en el corazón de la capital panameña',
                 location: 'Panama City',
                 logo: 'assets/brand/logo_panamacity.png',
-                url: 'https://chabad-panama.org.pa'
+                url: '#'
             },
             {
                 id: 'chabad-3',
@@ -23,7 +23,7 @@ function shabbatApp() {
                 description: 'Spiritual community in the heart of the city',
                 location: 'Casco Viejo',
                 logo: null,
-                url: 'https://chabad3-panama.org.pa'
+                url: '#'
             },
             {
                 id: 'chabad-4',
@@ -31,7 +31,7 @@ function shabbatApp() {
                 description: 'Modern Jewish life and tradition',
                 location: 'Punta Pacifica',
                 logo: null,
-                url: 'https://chabad4-panama.org.pa'
+                url: '#'
             }
         ],
         
