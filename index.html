@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shabbat Panamá - Selecciona tu comunidad</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.6s ease-out forwards;
+      }
+      .bg-gradient-radial {
+        background: radial-gradient(circle at center, var(--tw-gradient-stops));
+      }
+    </style>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="font-inter overflow-x-hidden min-h-screen bg-slate-50">
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+      <iframe
+        class="absolute top-1/2 left-1/2 pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
+        style="width: 200vw; height: 200vh; min-width: 200vmax; min-height: 200vmax;"
+        src="https://www.youtube.com/embed/k3dMHSUg4Qg?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1"
+        title="Panama 4K Background"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+      ></iframe>
+      <div class="absolute inset-0 bg-black/70 z-10"></div>
+    </div>
+
+    <div
+      class="relative z-20 min-h-screen px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex flex-col items-center justify-center"
+      x-data="shabbatApp()"
+    >
+      <header class="text-center mb-8 sm:mb-12 animate-fade-in-down">
+        <div class="mb-2 sm:mb-4">
+        </div>
+        <h1
+          class="text-4xl sm:text-6xl md:text-7xl lg:text-6xl font-bold text-white mb-2 sm:mb-4 tracking-tight"
+        >
+          Welcome to Panama
+        </h1>
+        <p class="text-lg sm:text-xl md:text-xl text-slate-300/90">
+          Find your Chabad home
+        </p>
+      </header>
+
+      <div
+        class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-sm sm:max-w-2xl lg:max-w-4xl"
+        x-data="{ showCards: false }"
+        x-init="setTimeout(() => showCards = true, 500)"
+      >
+        <template x-for="(community, index) in communities" :key="community.id">
+          <div
+            class="group aspect-square bg-white/90 backdrop-blur-lg rounded-2xl border border-white/30 cursor-pointer transition-all duration-300 hover:bg-white hover:scale-105 hover:shadow-xl opacity-0"
+            :class="showCards && 'animate-fade-in'"
+            :style="`animation-delay: ${index * 150}ms`"
+            @click="goToCommunity(community.url)"
+          >
+            <div
+              class="p-3 sm:p-4 h-full flex flex-col items-center justify-center text-center"
+            >
+              <div class="mb-2 sm:mb-3 h-16 sm:h-20 md:h-24 lg:h-16 flex items-center justify-center">
+                <div x-show="community.logo" class="w-full h-full flex items-center justify-center">
+                  <img
+                    :src="community.logo"
+                    :alt="community.name"
+                    class="max-w-full max-h-full object-contain"
+                  />
+                </div>
+                <div
+                  x-show="!community.logo"
+                  class="w-20 h-12 sm:w-24 sm:h-16 md:w-28 md:h-20 lg:w-20 lg:h-12 bg-slate-200 border border-slate-300 rounded-xl flex items-center justify-center"
+                >
+                  <span class="text-slate-500 text-xs sm:text-sm">Logo</span>
+                </div>
+              </div>
+              <h3
+                class="text-sm sm:text-base md:text-lg font-semibold text-slate-900 mb-1 group-hover:text-slate-700"
+                x-text="community.name"
+              ></h3>
+              <div class="flex items-center text-xs sm:text-sm text-slate-600 opacity-80">
+                <svg
+                  class="w-3 h-3 sm:w-4 sm:h-4 mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span x-text="community.location"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <footer class="mt-8 sm:mt-12 lg:mt-20 text-center">
+        <p class="text-white/70 text-xs sm:text-sm font-medium">
+          © 2025 Chabad Panama. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
