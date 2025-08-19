@@ -47,7 +47,7 @@
         frameborder="0"
         allow="autoplay; encrypted-media"
       ></iframe>
-      <div class="absolute inset-0 bg-[#17171B]/90 z-10"></div>
+      <div class="absolute inset-0 bg-[#17171B]/40 z-10"></div>
     </div>
     <div class="p-8">
       <header class="w-full flex justify-between">
@@ -60,94 +60,85 @@
       </header>
     </div>
 
-
-
-      <div
-        class="relative z-20 min-h-[70vh] px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex flex-col items-center justify-center"
-        x-data="shabbatApp()"
-      >
-        <div class="text-center mb-16 sm:mb-20 animate-fade-in-down">
-          <div class="mb-2 sm:mb-4"></div>
-          <h1
-            class="text-4xl sm:text-6xl md:text-4xl lg:text-4xl font-bold text-white mb-2 sm:mb-4 tracking-tight"
-          >
-            Four Chabad locations. One mission.
-          </h1>
-          <p class="text-lg sm:text-xl md:text-xl text-slate-300/90">
-            Panama: The #1 Kosher-Friendly Destination in Latin America
-          </p>
-        </div>
-
-        <div
-          class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-sm sm:max-w-2xl lg:max-w-3xl"
-          x-data="{ showCards: false }"
-          x-init="setTimeout(() => showCards = true, 500)"
+    <div
+      class="relative z-20 min-h-[70vh] px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex flex-col items-center justify-center"
+      x-data="shabbatApp()"
+    >
+      <div class="text-center mb-16 sm:mb-20 animate-fade-in-down">
+        <div class="mb-2 sm:mb-4"></div>
+        <h1
+          class="text-4xl sm:text-6xl md:text-4xl lg:text-4xl font-bold text-white mb-2 sm:mb-4 tracking-tight"
         >
-          <template
-            x-for="(community, index) in communities"
-            :key="community.id"
-          >
-            <div
-              class="group cursor-pointer transition-all duration-300 opacity-0"
-              :class="showCards && 'animate-fade-in'"
-              :style="`animation-delay: ${index * 150}ms`"
-              @click="goToCommunity(community.url)"
-            >
-              <div
-                class="h-full flex flex-col items-center justify-center text-center"
-              >
-                <div
-                  class="mb-3 sm:mb-3 h-30 rounded flex items-center justify-center"
-                >
-                  <div
-                    x-show="community.logo"
-                    class="w-32 h-32 md:w-36 md:h-36 flex items-center justify-center bg-white overflow-hidden rounded-full transition-transform duration-300 hover:scale-110"
-                  >
-                    <div class="w-28 h-full flex items-center justify-center">
-                      <img
-                        :src="community.logo"
-                        :alt="community.name"
-                        class="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    x-show="!community.logo"
-                    class="w-36 h-36 flex items-center justify-center bg-white rounded-full transition-transform duration-300 hover:scale-110 overflow-hidden"
-                  >
-                    <div class="w-28 h-full flex items-center justify-center">
-                      <span class="text-slate-500 text-xs sm:text-sm"
-                        >Logo</span
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="flex items-center justify-center">
-                  <h3
-                    class="md:mt-4 text-base sm:text-base md:text-xl font-semibold mb-1 text-white/90 hover:text-white/90"
-                    x-text="community.name"
-                  ></h3>
-                </div>
-
-                <div
-                  class="flex items-center text-xs sm:text-sm text-slate-600 opacity-80"
-                >
-                  <!-- <span x-text="community.location"></span> -->
-                </div>
-              </div>
-            </div>
-          </template>
-        </div>
-
-        <footer class="md:fixed md:bottom-10 mt-16 text-center">
-          <p class="text-white/70 text-xs sm:text-sm font-medium">
-            © 2025 Chabad Panama. All rights reserved.
-          </p>
-        </footer>
+          Four Chabad locations. One mission.
+        </h1>
+        <p class="text-lg sm:text-xl md:text-xl text-slate-300/90">
+          Panama: The #1 Kosher-Friendly Destination in Latin America
+        </p>
       </div>
 
+      <div
+        class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-sm sm:max-w-2xl lg:max-w-3xl"
+        x-data="{ showCards: false }"
+        x-init="setTimeout(() => showCards = true, 500)"
+      >
+        <template x-for="(community, index) in communities" :key="community.id">
+          <div
+            class="group cursor-pointer transition-all duration-300 opacity-0"
+            :class="showCards && 'animate-fade-in'"
+            :style="`animation-delay: ${index * 150}ms`"
+            @click="goToCommunity(community.url)"
+          >
+            <div
+              class="h-full flex flex-col items-center justify-center text-center"
+            >
+              <div
+                class="mb-3 sm:mb-3 h-30 rounded flex items-center justify-center"
+              >
+                <div
+                  x-show="community.logo"
+                  class="w-32 h-32 md:w-36 md:h-36 flex items-center justify-center bg-white overflow-hidden rounded-full transition-transform duration-300 hover:scale-110"
+                >
+                  <div class="w-28 h-full flex items-center justify-center">
+                    <img
+                      :src="community.logo"
+                      :alt="community.name"
+                      class="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div
+                  x-show="!community.logo"
+                  class="w-36 h-36 flex items-center justify-center bg-white rounded-full transition-transform duration-300 hover:scale-110 overflow-hidden"
+                >
+                  <div class="w-28 h-full flex items-center justify-center">
+                    <span class="text-slate-500 text-xs sm:text-sm">Logo</span>
+                  </div>
+                </div>
+              </div>
 
+              <div class="flex items-center justify-center">
+                <h3
+                  class="md:mt-4 text-base sm:text-base md:text-xl font-semibold mb-1 text-white/90 hover:text-white/90"
+                  x-text="community.name"
+                ></h3>
+              </div>
+
+              <div
+                class="flex items-center text-xs sm:text-sm text-slate-600 opacity-80"
+              >
+                <!-- <span x-text="community.location"></span> -->
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <footer class="md:fixed md:bottom-10 mt-16 text-center">
+        <p class="text-white/70 text-xs sm:text-sm font-medium">
+          © 2025 Chabad Panama. All rights reserved.
+        </p>
+      </footer>
+    </div>
 
     <script src="script.js"></script>
   </body>
